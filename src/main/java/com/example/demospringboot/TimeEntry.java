@@ -3,21 +3,17 @@ package com.example.demospringboot;
 import java.time.*;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+@Document // mongo
 @Data  // lombok
-@Entity  // Klasse kann in DB gespeichert werden - JPA (Java Persistence API)
-@NoArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor // lombok
+@RequiredArgsConstructor // lombok
 public class TimeEntry {
 
-    @Id // id für DB - JPA (Java Persistence API)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @Id // kommt von spring.framework (nicht von JPA, wie bei der H2-DB
+    private String id;
     @NonNull
     private LocalDateTime start;
     private LocalDateTime stop;
